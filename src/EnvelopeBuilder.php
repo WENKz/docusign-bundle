@@ -39,6 +39,8 @@ final class EnvelopeBuilder implements EnvelopeBuilderInterface
     private $apiUri;
     /** @var string|null */
     private $filePath;
+    /** @var string */
+    private $subject;
     /** @var int */
     private $docReference;
     /** @var FilesystemInterface */
@@ -109,6 +111,13 @@ final class EnvelopeBuilder implements EnvelopeBuilderInterface
     public function setFile(string $filePath): self
     {
         $this->filePath = $filePath;
+
+        return $this;
+    }
+
+    public function setSubject(string $subject): self
+    {
+        $this->subject = $subject;
 
         return $this;
     }
@@ -282,6 +291,11 @@ final class EnvelopeBuilder implements EnvelopeBuilderInterface
     public function getFileContent()
     {
         return $this->getFileSystem()->read($this->getFilePath());
+    }
+
+    public function getSubject(): string
+    {
+        return $this->subject;
     }
 
     public function getViewUrl(Model\RecipientViewRequest $recipientViewRequest): string
