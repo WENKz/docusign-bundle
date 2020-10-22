@@ -21,7 +21,7 @@ interface EnvelopeBuilderInterface
 {
     public function setFile(string $filePath);
 
-    public function setSubject(string $subject);
+    public function setSubject(?string $subject);
 
     public function getName(): string;
 
@@ -70,7 +70,7 @@ interface EnvelopeBuilderInterface
      */
     public function getFileContent();
 
-    public function getSubject(): string;
+    public function getSubject(): ?string;
 
     public function getViewUrl(Model\RecipientViewRequest $recipientViewRequest): string;
 
